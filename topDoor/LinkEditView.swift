@@ -34,7 +34,9 @@ struct LinkEditView: View {
             .padding()
         }
         .frame(minWidth: 400, minHeight: 300)
-        .toolbar { EditButton() }
+        // macOS では EditButton が提供されていないため、
+        // 編集モード用のボタンは表示しない
+        // .toolbar { EditButton() }
     }
 
     private func addNewLink() {
