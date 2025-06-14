@@ -1,4 +1,5 @@
 import Foundation
+import AppKit
 
 // リンクの種類
 enum LinkType: String, CaseIterable, Codable {
@@ -17,7 +18,7 @@ enum LinkType: String, CaseIterable, Codable {
 
 // リンクデータモデル
 struct LinkItem: Identifiable, Codable {
-    let id = UUID()
+    var id = UUID()
     var name: String
     var url: String
     var type: LinkType
