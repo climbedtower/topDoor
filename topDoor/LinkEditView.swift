@@ -5,6 +5,7 @@ struct LinkEditView: View {
     @State private var newName = ""
     @State private var newURL = ""
     @State private var newType: LinkType = .web
+    @State private var editMode: EditMode = .inactive
 
     var body: some View {
         VStack {
@@ -34,7 +35,12 @@ struct LinkEditView: View {
             .padding()
         }
         .frame(minWidth: 400, minHeight: 300)
-        .toolbar { EditButton() }
+        .environment(\.editMode, $editMode)
+        .toolbar {
+            Button(editMode.isEditing ? "完了" : "編集") {
+                editMode = editMode.isEditing ? .inactive : .active
+            }
+        }
     }
 
     private func addNewLink() {
