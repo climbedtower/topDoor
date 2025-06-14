@@ -1,20 +1,4 @@
-// リンクデータモデル
-struct LinkItem: Identifiable, Codable {
-    var id: UUID
-    var name: String
-    var url: String
-    var type: LinkType
-    var openWith: String? // ファイルを開くアプリを指定する場合
-    
-    init(name: String, url: String, type: LinkType, openWith: String? = nil) {
-        self.id = UUID()
-        self.name = name
-        self.url = url
-        self.type = type
-        self.openWith = openWith
-    }
-}import Foundation
-import AppKit
+import Foundation
 
 // リンクの種類
 enum LinkType: String, CaseIterable, Codable {
