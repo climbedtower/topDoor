@@ -94,7 +94,12 @@ class LinkManager: ObservableObject {
             NSWorkspace.shared.open(url)
         case .file:
             if let openWith = link.openWith, !openWith.isEmpty {
-                NSWorkspace.shared.openFile(link.url, withApplication: openWith)
+                let fileURL = URL(fileURLWithPath: link.url)
+                let appURL = URL(fileURLWithPath: openWith)
+                let configuration = NSWorkspace.OpenConfiguration()
+                NSWorkspace.shared.open([fileURL], withApplicationAt: appURL,
+                                        configuration: configuration,
+                                        completionHandler: nil)
             } else {
                 let url = URL(fileURLWithPath: link.url)
                 NSWorkspace.shared.open(url)
