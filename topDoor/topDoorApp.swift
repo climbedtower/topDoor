@@ -2,7 +2,7 @@ import SwiftUI
 import Combine
 
 @main
-struct MenuLinkerApp: App {
+struct TopDoorApp: App {
     @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     
     var body: some Scene {
