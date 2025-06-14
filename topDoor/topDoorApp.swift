@@ -1,5 +1,6 @@
 import SwiftUI
 import Combine
+import AppKit
 
 @main
 struct TopDoorApp: App {
@@ -16,6 +17,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var statusItem: NSStatusItem?
     var linkManager = LinkManager()
     var linksSubscriber: AnyCancellable?
+    var editWindow: NSWindow?
     
     func applicationDidFinishLaunching(_ notification: Notification) {
         // メニューバーアイテムを作成
@@ -46,6 +48,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             menu.addItem(item)
         }
 
+        let editItem = NSMenuItem(title: "リンクを編集...", action: #selector(openManageLinks), keyEquivalent: "")
+        editItem.target = self
+        menu.addItem(editItem)
+
         menu.addItem(NSMenuItem(title: "Version \(AppVersion.current)", action: nil, keyEquivalent: ""))
         menu.addItem(NSMenuItem.separator())
         menu.addItem(NSMenuItem(title: "Quit", action: #selector(quit), keyEquivalent: "q"))
@@ -56,6 +62,25 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @objc func openLinkItem(_ sender: NSMenuItem) {
         if let link = sender.representedObject as? LinkItem {
             linkManager.openLink(link)
+        }
+    }
+
+    @objc func openManageLinks() {
+        if editWindow == nil {
+            let editView = LinkEditView(linkManager: linkManager)
+            let controller = NSHostingController(rootView: editView)
+            editWindow = NSWindow(contentViewController: controller)
+            editWindow?.title = "リンク編集"
+            editWindow?.setContentSize(NSSize(width: 500, height: 400))
+            NotificationCenter.default.addObserver(self, selector: #selector(editWindowClosed(_:)), name: NSWindow.willCloseNotification, object: editWindow)
+        }
+        editWindow?.makeKeyAndOrderFront(nil)
+        NSApp.activate(ignoringOtherApps: true)
+    }
+
+    @objc func editWindowClosed(_ notification: Notification) {
+        if let win = notification.object as? NSWindow, win == editWindow {
+            editWindow = nil
         }
     }
     
