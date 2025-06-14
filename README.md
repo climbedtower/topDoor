@@ -108,3 +108,4 @@ topDoor/
 ## Change Log
 
 - v0.1.0 – 2025-06-15 : Initial implementation with MenuBarExtra, JSON config, and project launcher
+- v0.2.0 – 2025-06-15 : Added Scrapbox integration with automatic page name extraction for group names

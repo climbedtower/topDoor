@@ -106,6 +106,12 @@ struct MenuBarContentView: View {
     @ViewBuilder
     private var footerView: some View {
         HStack {
+            Button("Settings") {
+                openSettings()
+            }
+            .buttonStyle(.borderless)
+            .font(.caption)
+            
             Button("Reload Config") {
                 appState.reloadConfig()
             }
@@ -123,6 +129,25 @@ struct MenuBarContentView: View {
         }
         .padding()
         .background(Color(NSColor.windowBackgroundColor))
+    }
+    
+    private func openSettings() {
+        let settingsWindow = NSWindow(
+            contentRect: NSRect(x: 0, y: 0, width: 450, height: 500),
+            styleMask: [.titled, .closable],
+            backing: .buffered,
+            defer: false
+        )
+        settingsWindow.title = "topDoor Settings"
+        settingsWindow.contentView = NSHostingView(
+            rootView: SettingsView()
+                .environmentObject(appState)
+        )
+        settingsWindow.center()
+        settingsWindow.makeKeyAndOrderFront(nil)
+        
+        // ウィンドウを前面に表示
+        NSApp.activate(ignoringOtherApps: true)
     }
     
     private func loadConfigIfNeeded() {
