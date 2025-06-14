@@ -9,9 +9,19 @@ import SwiftUI
 
 @main
 struct topDoorApp: App {
+    @StateObject private var appState = AppState()
+    
     var body: some Scene {
-        WindowGroup {
-            ContentView()
+        MenuBarExtra("topDoor", systemImage: "hammer.circle") {
+            MenuBarContentView()
+                .environmentObject(appState)
+                .onAppear {
+                    // アプリをバックグラウンドアプリとして設定
+                    DispatchQueue.main.async {
+                        NSApp.setActivationPolicy(.accessory)
+                    }
+                }
         }
+        .menuBarExtraStyle(.window)
     }
 }
