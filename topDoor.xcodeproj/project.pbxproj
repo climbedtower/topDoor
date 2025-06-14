@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9573C6662DFDE6B0006AB163 /* VERSION in Resources */ = {isa = PBXBuildFile; fileRef = 9573C6652DFDE6B0006AB163 /* VERSION */; };
 		9573C6672DFDE6B0006AB163 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 9573C6642DFDE6B0006AB163 /* README.md */; };
 /* End PBXBuildFile section */
 
@@ -33,7 +32,6 @@
 		9573C6292DFDCB6E006AB163 /* topDoorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = topDoorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9573C6332DFDCB6E006AB163 /* topDoorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = topDoorUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9573C6642DFDE6B0006AB163 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		9573C6652DFDE6B0006AB163 /* VERSION */ = {isa = PBXFileReference; lastKnownFileType = text; path = VERSION; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -83,7 +81,6 @@
 			isa = PBXGroup;
 			children = (
 				9573C6642DFDE6B0006AB163 /* README.md */,
-				9573C6652DFDE6B0006AB163 /* VERSION */,
 				9573C61A2DFDCB6B006AB163 /* topDoor */,
 				9573C62C2DFDCB6E006AB163 /* topDoorTests */,
 				9573C6362DFDCB6E006AB163 /* topDoorUITests */,
@@ -221,7 +218,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9573C6662DFDE6B0006AB163 /* VERSION in Resources */,
 				9573C6672DFDE6B0006AB163 /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
